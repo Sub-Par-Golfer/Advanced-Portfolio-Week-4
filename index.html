@@ -12,8 +12,20 @@
       src="https://kit.fontawesome.com/0579d1412b.js"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "wciuI5vtvYyfew6j9",
+      });
+   })();
+</script>
     <script src="app.js" defer></script>
   </head>
+
+
   <body>
     <section id="landing-page">
       <nav>
@@ -35,7 +47,7 @@
               >Projects</a
             >
           </li>
-          <li class="nav__link">
+          <li class="nav__link" onclick="toggleModal()">
             <a
               href="#"
               class="nav__link--anchor link__hover-effect link__hover-effect--black"
@@ -59,7 +71,7 @@
             I'm a <b class="text__green">Frontend Software Engineer</b> with a
             strong passion for building web application with great user
             experiences. <br />Here's a bit more
-            <a href=""><b class="text__green">about me.</b></a>
+            <a href=""><b class="text__green click" onclick="toggleModal()">about me.</b></a>
           </p>
           <div class="social__list">
             <a
@@ -85,7 +97,7 @@
         </div>
       </header>
       <button class="mail__btn click">
-        <i class="fa-solid fa-envelope"></i>
+        <i class="fa-solid fa-envelope"  onclick="toggleModal()"></i>
       </button>
       <a href="#projects" class="scroll">
         <div class="scroll__icon click"></div>
@@ -93,28 +105,84 @@
       <div class="modal">
         <div class="modal__half modal__about">
           <h3 class="modal__title">Here's a bit about me.</h3>
-          <h4 class="modal__sub-title modal__sub-title--about">Frontend Software Engineer</h4>
-          <p class="modal__para">Lorem ipsum dolor sit amet <b class="text__green">consectetur adipisicing</b> elit. Sed sit nulla saepe omnis neque veniam pariatur voluptatibus esse, placeat fuga atque. Quis autem dolorum nihil odio sunt a alias cumque, cum ducimus aut quae ab doloribus repellendus, nobis quasi adipisci hic qui magni corrupti deleniti obcaecati neque voluptate! Tenetur, suscipit. <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati voluptates unde fuga nesciunt ullam eaque. Iusto omnis obcaecati temporibus tenetur?</p>
+          <h4 class="modal__sub-title modal__sub-title--about">
+            Frontend Software Engineer
+          </h4>
+          <p class="modal__para">
+            Lorem ipsum dolor sit amet
+            <b class="text__green">consectetur adipisicing</b> elit. Sed sit
+            nulla saepe omnis neque veniam pariatur voluptatibus esse, placeat
+            fuga atque. Quis autem dolorum nihil odio sunt a alias cumque, cum
+            ducimus aut quae ab doloribus repellendus, nobis quasi adipisci hic
+            qui magni corrupti deleniti obcaecati neque voluptate! Tenetur,
+            suscipit. <br />Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Obcaecati voluptates unde fuga nesciunt ullam eaque. Iusto
+            omnis obcaecati temporibus tenetur?
+          </p>
           <div class="modal__languages">
             <figure class="modal__language">
-              <img class="modal__language--img" src="./assets/HTML Logo.png" alt="">
+              <img
+                class="modal__language--img"
+                src="./assets/HTML Logo.png"
+                alt=""
+              />
               <span class="language__name">HTML</span>
             </figure>
             <figure class="modal__language">
-              <img class="modal__language--img" src="./assets/CSS3_logo.png" alt="">
+              <img
+                class="modal__language--img"
+                src="./assets/CSS3_logo.png"
+                alt=""
+              />
               <span class="language__name">CSS</span>
             </figure>
             <figure class="modal__language">
-              <img class="modal__language--img" src="./assets/javascript-logo.png" alt="">
+              <img
+                class="modal__language--img"
+                src="./assets/javascript-logo.png"
+                alt=""
+              />
               <span class="language__name">Javascript</span>
             </figure>
             <figure class="modal__language">
-              <img class="modal__language--img react__logo" src="./assets/React-logo.png" alt="">
-              <span class="language__name">React</span>
-            </figure>
+              <img
+                class="modal__language--img react__logo"
+                src="./assets/React-logo.png"
+                alt=""
+                />
+                <span class="language__name">React</span>
+              </figure>
+            </div>
+          </div>
+          <div class="modal__half modal__contact">
+          <i class="fa-regular fa-circle-xmark modal__exit click" onclick="toggleModal()"></i>
+          <h3 class="modal__title modal__title--contact">Let's have a chat!</h3>
+          <h4 class="modal__sub-title modal__sub-title--contact">
+            I'm currently open to new opportunities.
+          </h4>
+          <form id="contact__form" onsubmit="contact(event)">
+            <div class="form__item">
+              <label class="form__item--label">Name</label>
+              <input class="input" name="user_name" type="text" required></input>
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Email</label>
+              <input class="input" name="user_email" type="email" required></input>
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Message</label>
+              <textarea class="input" name="message" type="text" required>
+              </textarea>
+            </div>
+            <button id="contact__submit" class="form__submit">Send it my way</button>
+          </form>
+          <div class="modal__overlay modal__overlay--loading">
+            <i class="fa-solid fa-spinner"></i>
+          </div>
+          <div class="modal__overlay modal__overlay--success">
+            Thanks for the message! Looking forward to speaking to you soon.
           </div>
         </div>
-        <div class="modal__half modal__contact">Let's have a chat!</div>
       </div>
     </section>
     <section id="projects">
@@ -191,8 +259,8 @@
               LinkedIn
             </a>
             <a
-              href="#"
-              class="footer__social--link link__hover-effect link__hover-effect--white"
+              href=""
+              class="footer__social--link link__hover-effect link__hover-effect--white" onclick="toggleModal()"
             >
               Contact
             </a>
